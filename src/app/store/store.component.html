@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-xl  bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">SPORTS STORE</a>
+</nav>
+<div class="row">
+    <div class="col-3 bg-info p-a-1">
+        <button class="btn btn-outline-primary btn-block" (click)="changeCategory()">
+            Home
+        </button>
+        <button *ngFor="let cat of categories" class="btn btn-outline-primary btn-block"
+        [class.active]="cat==selectedCategory" (click)="changeCategory(cat)">
+            {{cat}}
+        </button>
+        Total {{categories.length}} Categories
+    </div>
+    <div class="col-9 bg-success p-a-1">
+        <div *ngFor="let product of products" class="card bg-primary">
+            <h4 class="cardhead">
+                {{product.name}}
+                <span class="badge float-sm-right bg-info">
+                    {{product.price | currency:"USD":true:"2.2-2"}}
+                </span>
+            </h4>
+            <div class="card card-body card-text">
+                {{product.description}}
+            </div>
+        </div>
+        Total {{products.length}} Products
+    </div>
+</div>
