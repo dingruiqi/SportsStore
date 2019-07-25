@@ -7,13 +7,13 @@
             Home
         </button>
         <button *ngFor="let cat of categories" class="btn btn-outline-primary btn-block"
-        [class.active]="cat==selectedCategory" (click)="changeCategory(cat)">
+            [class.active]="cat==selectedCategory" (click)="changeCategory(cat)">
             {{cat}}
         </button>
         Total {{categories.length}} Categories
     </div>
     <div class="col-9 bg-success p-a-1">
-        <div *ngFor="let product of products" class="card text-white bg-primary mb-3"> 
+        <div *ngFor="let product of products" class="card text-white bg-primary mb-3">
             <h4 class="card-header">
                 {{product.name}}
                 <span class="badge float-sm-right bg-info">
@@ -24,7 +24,24 @@
                 {{product.description}}
             </div>
         </div>
-        <div>sdf</div>
+
+        <div class="clearfix">
+            <div class="form-inline float-left mr-1">
+                <select class="form-control" [value]="productsPerPage" (change)="changePageSize($event.target.value)">
+                    <option value="3">3 per Page</option>
+                    <option value="4">4 per Page</option>
+                    <option value="6">6 per Page</option>
+                    <option value="8">8 per Page</option>
+                </select>
+            </div>
+
+            <div class="btn-group float-right mr-1">
+                <button *ngFor="let page of pageNumbers" (click)="changePage(page)" class="btn btn-outline-primary"
+                    [class.active]="page==selectedPage">
+                    {{page}}
+                </button>
+            </div>
+        </div>
         Total {{products.length}} Products
     </div>
 </div>
