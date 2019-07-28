@@ -2,7 +2,7 @@
     <a class="navbar-brand" href="#">SPORTS STORE</a>
 </nav>
 <div class="row">
-    <div class="col-3 bg-info p-a-1">
+    <div class="col-3 bg-info p-1">
         <button class="btn btn-outline-primary btn-block" (click)="changeCategory()">
             Home
         </button>
@@ -12,7 +12,7 @@
         </button>
         Total {{categories.length}} Categories
     </div>
-    <div class="col-9 bg-success p-a-1">
+    <div class="col-9 bg-success p-1">
         <div *ngFor="let product of products" class="card text-white bg-primary mb-3">
             <h4 class="card-header">
                 {{product.name}}
@@ -36,7 +36,7 @@
             </div>
 
             <div class="btn-group float-right mr-1">
-                <button *ngFor="let page of pageNumbers" (click)="changePage(page)" class="btn btn-outline-primary"
+                <button *counter="let page of pageCount" (click)="changePage(page)" class="btn btn-outline-primary"
                     [class.active]="page==selectedPage">
                     {{page}}
                 </button>
