@@ -5,7 +5,8 @@ import { Component } from '@angular/core';
   selector: 'app',
   //templateUrl: './app.component.html',
   //template: '<div class="bg-success p-a-1 h1 text-center">This is SportsStore</div>',
-  template: '<store></store>',
+  //template: '<store></store>',
+  template:"<router-outlet></router-outlet>",
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
