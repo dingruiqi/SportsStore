@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { StoreFirstGuard } from './store/storeFirst.guard';
 
 @NgModule({
   declarations: [
@@ -18,10 +19,10 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
     StoreModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [StoreFirstGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   constructor() {
     // Add an icon to the library for convenient access in other components
     library.add(faShoppingCart);
