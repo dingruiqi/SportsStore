@@ -5,7 +5,9 @@ import { StoreComponent } from './store.component';
 @Injectable()
 export class StoreFirstGuard implements CanActivate {
     private firstNavigation = true;
-    constructor(private router: Router) { }
+    constructor(private router: Router) {
+        console.log("CanActivate");
+     }
 
     canActivate(route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean {
