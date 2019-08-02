@@ -3,6 +3,7 @@ import { Product } from "./product.model";
 //import{Observable} from "rxjs/Observable";
 //import "rxjs/add/observable/from";
 import { Observable, of } from 'rxjs';
+import { Order } from './order.model';
 
 @Injectable()
 export class StaticDataSource {
@@ -24,9 +25,18 @@ export class StaticDataSource {
         new Product(15, "Product 15", "Category 3", "Product 15 (Category 3)", 100),
     ];
 
+    constructor(){
+        console.log("StaticDataSource-构造");
+    }
+
     getProducts(): Observable<Product[]> {
         return of(this.products);
         //return Observable.create([this.products]);
+    }
+
+    saveOrder(order: Order): Observable<Order> {
+        console.log(JSON.stringify(order));
+        return of(order);
     }
 }
 
