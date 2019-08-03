@@ -29,7 +29,7 @@ export class RestDataSource {
             );
     }
 
-    saveOrders(order: Order): Observable<Order> {
+    saveOrder(order: Order): Observable<Order> {
         let configUrl = this.baseUrl + "orders";
         return this.http.post<Order>(configUrl, order)
             .pipe(
