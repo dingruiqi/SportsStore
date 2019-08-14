@@ -12,6 +12,9 @@
             {{cat}}
         </button>
         Total {{categories.length}} Categories
+        <button class="btn btn-block btn-danger mt-3" routerLink="/admin">
+            Admin
+        </button>
     </div>
     <div class="col-9 bg-success p-1">
         <div *ngFor="let product of products" class="card text-white bg-primary mb-3">
@@ -23,8 +26,7 @@
             </h4>
             <div class="card-body card-text">
                 {{product.description}}
-                <button class="btn btn-success btn-sm float-right"
-                (click)="addProductToCart(product)">
+                <button class="btn btn-success btn-sm float-right" (click)="addProductToCart(product)">
                     Add To Cart
                 </button>
             </div>

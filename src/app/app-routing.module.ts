@@ -7,9 +7,10 @@ import { StoreFirstGuard } from './store/storeFirst.guard';
 
 
 const routes: Routes = [
-  { path: "store", component: StoreComponent,canActivate:[StoreFirstGuard] },
-  { path: "cart", component: CartDetailComponent ,canActivate:[StoreFirstGuard]},
-  { path: "checkout", component: CheckoutComponent ,canActivate:[StoreFirstGuard]},
+  { path: "store", component: StoreComponent, canActivate: [StoreFirstGuard] },
+  { path: "cart", component: CartDetailComponent, canActivate: [StoreFirstGuard] },
+  { path: "checkout", component: CheckoutComponent, canActivate: [StoreFirstGuard] },
+  { path: "admin", loadChildren: "app/admin/admin.module#AdminModule", canActivate: [StoreFirstGuard] },//动态加载管理模块
   { path: "**", redirectTo: "/store" }
 ];
 
