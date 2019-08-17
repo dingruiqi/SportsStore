@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Product } from './product.model';
 
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, retry, map } from 'rxjs/operators';
 import { Order } from './order.model';
 
 
@@ -15,9 +15,26 @@ const PORT = 3500;
 @Injectable()
 export class RestDataSource {
     baseUrl: string;
+    auth_token: string;
 
     constructor(private http: HttpClient) {
         this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+    }
+
+    authenticate(user: string, pass: string): Observable<boolean> {
+        let configUrl = this.baseUrl + "login";
+        return this.http.post(configUrl, { name: user, password: pass })
+            .pipe(
+                map(result => {
+                    let r = result;
+                    return true;
+                })
+            );
+        // return this.http.request(request)
+        // .pipe(
+        //     retry(3), // retry a failed request up to 3 times
+        //         catchError(this.handleError) // then handle the error
+        //     );
     }
 
     getProducts(): Observable<Product[]> {

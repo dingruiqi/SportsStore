@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 let routing = RouterModule.forChild([
     { path: "auth", component: AuthComponent },
     { path: "main", component: AdminComponent },
-    { path: "**", redirectTo: "auto" }
+    { path: "**", redirectTo: "auth" }
 ]);
 
 @NgModule({
