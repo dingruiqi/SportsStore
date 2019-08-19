@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: "store", component: StoreComponent, canActivate: [StoreFirstGuard] },
   { path: "cart", component: CartDetailComponent, canActivate: [StoreFirstGuard] },
   { path: "checkout", component: CheckoutComponent, canActivate: [StoreFirstGuard] },
-  { path: "admin", loadChildren: "src/app/admin/admin.module#AdminModule", canActivate: [StoreFirstGuard] },//动态加载管理模块
+  //{ path: "admin", loadChildren: "src/app/admin/admin.module#AdminModule", canActivate: [StoreFirstGuard] },//动态加载管理模块
+  { path: "admin", loadChildren: () => import("./admin/admin.module").then(m => m.AdminModule), canActivate: [StoreFirstGuard] },//动态加载管理模块 新语法
   { path: "**", redirectTo: "/store" }
 ];
 
